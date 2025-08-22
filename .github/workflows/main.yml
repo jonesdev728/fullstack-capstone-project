@@ -8,25 +8,24 @@ on:
 
 jobs:
   lint_js:
-    name: Lint JavaScript Files
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-    - name: Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 14
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install JSHint
-      run: npm install jshint --global
+      - name: Install JSHint
+        run: npm install -g jshint
 
-    - name: Run Linter
-      run: |
-        find ./giftlink-backend -name "*.js" -exec jshint {} +
-        echo "Linted all the js files successfully"
+      - name: Run JSHint
+        run: jshint giftlink-backend/**/*.js
+
+      - name: Lint completed
+        run: echo "Linting completed successfully"
 
   client_build:
     name: Build client
