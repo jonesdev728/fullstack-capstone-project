@@ -2,6 +2,3 @@
   "esversion": 8,
   "node": true
 }
-"rules": {
-  "no-unused-vars": "warn"
-}
